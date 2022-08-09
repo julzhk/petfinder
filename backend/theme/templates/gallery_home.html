@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load tailwind_tags %}
+
+{% block main %}
+    <ul>
+        {% for pet in pets %}
+            <li>
+                {% for photo in pet.photos %}
+                    {{ photo.small }}
+                    {% if photo.small %}
+                        <img src="{{ photo.small }}">
+                        <div>{{ pet.id }}</div>
+                    {% endif %}
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

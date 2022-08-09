@@ -21,11 +21,18 @@ export default {
     }
   },
 
-  async  created() {
-    axios.get(`http://jsonplaceholder.typicode.com/posts`)
+  async created() {
+    let config = {
+      headers: {
+        client_id:'nDWRRrLpMMftXCMF7y8chxHILTyXaLcM0xWDhwfnQhKKHTBylY',
+        client_secret:'67tOPHpNLBjUkD1gwyoKrln5DKGQTwLPBuCuoYwh',
+      }
+    }
+    axios.get('https://api.petfinder.com/v2/oauth2/token',config)
         .then(response => {
           // JSON responses are automatically parsed.
           this.info = response.data
+          console.log(response)
         })
         .catch(e => {
           this.errors.push(e)
