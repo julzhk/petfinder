@@ -29,8 +29,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'petAPI',
+    'petgallery',
     'tailwind',
     'theme',
+    "django_htmx",
     'django_browser_reload',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,10 +48,13 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,6 +135,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CLIENT_ID = os.environ['CLIENT_ID']
-CLIENT_SECRET = os.environ['CLIENT_SECRET']
-CLIENT_URL = os.environ['CLIENT_URL']
+CLIENT_ID = os.environ.get('CLIENT_ID', 'xx')
+CLIENT_SECRET = os.environ.get('CLIENT_SECRET', 'xx')
+CLIENT_URL = os.environ.get('CLIENT_URL', 'xx')

@@ -3,9 +3,11 @@
 
 {% block main %}
     <ul>
-        {% for animal in animals.animals %}
+        {% for animal_type in animals.animals %}
             <li>
-                {{ animal.name }}
+                <a href="{% url 'gallery' %}?type={{ animal_type.name }}">
+                    {{ animal_type.name }}
+                </a>
             </li>
         {% endfor %}
     </ul>

@@ -1,6 +1,6 @@
 from django.test import Client, TestCase
 
-from petgallery.models import Animals, get_access_token
+from petgallery.models import AnimalTypes, get_access_token
 
 
 class TestAPI(TestCase):
@@ -26,6 +26,6 @@ class Testgallery(TestCase):
         self.assertTrue(token)
 
     def test_get_animals_list(self):
-        animals = Animals()
+        animals = AnimalTypes()
         types = [a.name for a in animals.animals]
         self.assertEqual(set(types), {'Dog', 'Cat', 'Rabbit', 'Small & Furry', 'Horse', 'Bird', 'Scales, Fins & Other', 'Barnyard'})

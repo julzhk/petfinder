@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import include, path
 
 from petAPI.views import petapi
-from petgallery.views import home
+from petgallery.views import gallery, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('petapi', petapi, name='api'),
     path("__reload__/", include("django_browser_reload.urls")),
+    path('gallery', gallery, name='gallery'),
     path('', home, name='home'),
 ]
