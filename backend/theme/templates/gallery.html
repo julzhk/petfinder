@@ -1,13 +1,15 @@
 {% load tailwind_tags %}
 {% load gallery_components %}
 
-    <div class="grid gap-4 grid-cols-3">
-        {% for animal in animals %}
-            {% animal_tile animal %}
-        {% endfor %}
-    </div>
-        <span hx-get="{% url 'gallery' %}?type={{ animal_type }}&page={{ next_page }}"
-             hx-trigger="revealed"
-             hx-target="#animal-grid"
-             hx-swap="beforeend">
+<div class="contents"
+     id="animal-grid-inner">
+    {% for animal in animals %}
+        {% animal_tile animal %}
+    {% endfor %}
+</div>
+<span class="hidden"
+      hx-get="{% url 'gallery' %}?type={{ animal_type }}&page={{ next_page }}"
+      hx-trigger="revealed"
+      hx-target="#animal-grid-inner"
+      hx-swap="beforeend">
         </span>
