@@ -3,15 +3,9 @@
 
 {% block main %}
     <ul>
-        {% for pet in pets %}
+        {% for animal in animals.animals %}
             <li>
-                {% for photo in pet.photos %}
-                    {{ photo.small }}
-                    {% if photo.small %}
-                        <img src="{{ photo.small }}">
-                        <div>{{ pet.id }}</div>
-                    {% endif %}
-                {% endfor %}
+                {{ animal.name }}
             </li>
         {% endfor %}
     </ul>
