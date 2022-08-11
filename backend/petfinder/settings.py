@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'xxm!*vh^6rbzv@yxq+2-9z-qro$2oqjp9x81l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', 'julz-petfinder.herokuapp.com')]
 
 # Application definition
 
