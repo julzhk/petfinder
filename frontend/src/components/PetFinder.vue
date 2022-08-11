@@ -24,8 +24,8 @@ export default {
   async created() {
     let config = {
       headers: {
-        client_id:'nDWRRrLpMMftXCMF7y8chxHILTyXaLcM0xWDhwfnQhKKHTBylY',
-        client_secret:'67tOPHpNLBjUkD1gwyoKrln5DKGQTwLPBuCuoYwh',
+        client_id:'XXX',
+        client_secret:'YYY',
       }
     }
     axios.get('https://api.petfinder.com/v2/oauth2/token',config)
