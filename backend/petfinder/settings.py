@@ -18,8 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm!*vh^6rbzv@yxq+2-9z-qro$2oqjp9x81lbo7m32a&9uezmm2'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'xxm!*vh^6rbzv@yxq+2-9z-qro$2oqjp9x81lbo7m32a&9uezmm2')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,7 +48,7 @@ INTERNAL_IPS = [
 ]
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
