@@ -7,6 +7,10 @@ from dataclasses_json import dataclass_json, Undefined
 from django.conf import settings
 
 
+class RateLimitError(Exception):
+    pass
+
+
 @dataclass_json
 @dataclass
 class AnimalType:
@@ -24,7 +28,10 @@ class AnimalTypes:
 
     def __post_init__(self):
         data = make_request(path='types')
-        self.animals = [AnimalType.from_dict(d) for d in data['types']]
+        try:
+            self.animals = [AnimalType.from_dict(d) for d in data['types']]
+        except KeyError:
+            raise RateLimitError()
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -55,7 +62,7 @@ class Animal:
     description: Optional[str] = ''
 
     @classmethod
-    def populate(cls, animal_type, page:int=1):
+    def populate(cls, animal_type, page: int = 1):
         data = make_request(path=f'animals?type={animal_type}&page={page}')
         return cls.schema().load(data['animals'], many=True)
 

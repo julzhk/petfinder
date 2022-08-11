@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'xxm!*vh^6rbzv@yxq+2-9z-qro$2oqjp9x81l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', 'julz-petfinder.herokuapp.com')]
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', 'julz-petfinder.herokuapp.com'), 'localhost']
 
 # Application definition
 
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'petfinder.wsgi.application'
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'django-cache'),
         'TIMEOUT': 3600,
     }
