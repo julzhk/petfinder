@@ -28,10 +28,9 @@ class AnimalTypes:
 
     def __post_init__(self):
         data = make_request(path='types')
-        try:
-            self.animals = [AnimalType.from_dict(d) for d in data['types']]
-        except KeyError:
+        if data['status'] == 429:
             raise RateLimitError()
+        self.animals = [AnimalType.from_dict(d) for d in data['types']]
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -46,19 +45,19 @@ class Photo:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclass
 class Animal:
-    age: str
-    gender: str
-    id: int
-    name: str
-    organization_id: str
-    photos: list[Photo]
-    published_at: str
-    size: str
-    species: str
-    status: str
-    status_changed_at: str
-    type: str
-    url: str
+    age: str = ''
+    gender: str = ''
+    id: int = ''
+    name: str = ''
+    organization_id: str = ''
+    photos: list[Photo] = field(default_factory=list)
+    published_at: str = ''
+    size: str = ''
+    species: str = ''
+    status: str = ''
+    status_changed_at: str = ''
+    type: str = ''
+    url: str = ''
     description: Optional[str] = ''
 
     @classmethod

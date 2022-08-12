@@ -1,6 +1,6 @@
 module.exports = {
     devServer: {
-        proxy: 'https://api.petfinder.com/',
-        port: 80
+        proxy: 'http://localhost:8000/',
+        port: 8000
     }
 }
