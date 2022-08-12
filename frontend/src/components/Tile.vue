@@ -4,8 +4,9 @@
       <div class="flex flex-wrap justify-center">
         <div class="w-full flex justify-center">
           <div class="relative">
-            <img src="{{ animal.photos.0.medium }}"
-                 class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 h-[160px] max-w-[180px]"/>
+            <img src="https://placekitten.com/200/200"
+                 class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 h-[160px] max-w-[180px]"
+            />
           </div>
         </div>
         <div class="w-full text-center mt-20">
