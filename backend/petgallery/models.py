@@ -27,10 +27,11 @@ class AnimalTypes:
     animals: List[AnimalType] = field(default_factory=list)
 
     def __post_init__(self):
-        data = make_request(path='types')
-        if data['status'] == 429:
+        try:
+            data = make_request(path='types')
+            self.animals = [AnimalType.from_dict(d) for d in data['types']]
+        except KeyError:
             raise RateLimitError()
-        self.animals = [AnimalType.from_dict(d) for d in data['types']]
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
